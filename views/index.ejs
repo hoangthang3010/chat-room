@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Chat Room</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://pohipchatroom.herokuapp.com/socket.io/socket.io.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="loginform">
+                <h3>What's your name ?</h3>
+                <input type="text" name="" id="txt_username">
+                <input type="button" value="Register" id="btn_register">
+            </div>
+            <div class="chatform">
+                <div id="leftchatform">
+                    <div id="box-title">User Online</div>
+                    <div id="box-content">
+                    </div>
+                </div>
+                <div id="rightchatform">
+                    <div id="ele_sayhi">
+                        Hello <span id="currentuser"></span>
+                        <input type="button" value="Log out" id="btn_logout">
+                    </div>
+                    <div id="listmess">
+
+                    </div>
+                    <div class="writing"></div>
+                    <div>
+                        <input type="text" name="" id="txt_mess">
+                        <input type="button" value="Send" id="btn_sendmess">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
