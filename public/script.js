@@ -7,18 +7,22 @@ socket.on("server-send-reg-fail" , () =>{
 socket.on("server-send-reg-success" , (data) =>{
     $(".loginform").hide(2000);
     $(".chatform").show(1000);
+    $(".chatform").css("display", "flex");
+
 
     $("#currentuser").html(data);
 
 })
 
 socket.on("server-send-mess-forglobal" , (data) =>{
-    const html = `<p>${data}</p>`;
+    // const html = `<p>${data}</p>`;
+    const html = `<div class="yourmess"><img class="avatar-in-mess" src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png"/><span class="content">${data}</span></div>`;
     addMess(html);
 })
-
+ 
 socket.on("server-send-mess-forme" , (data) =>{
-    const html = `<p class="mymess">${data}</p>`;
+    // const html = `<div><p class="mymess">Tôi</p><p class="mymess">${data}</p><div>`;
+    const html = `<div class="mymess"><span class="content">${data}</span><img class="avatar-in-mess" src="https://iphonecugiare.com/wp-content/uploads/2020/03/89987601_811132979393833_6977336580381868032_n.jpg"/></div>`;
     addMess(html);
 
 })

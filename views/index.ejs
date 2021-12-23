@@ -14,26 +14,35 @@
     <body>
         <div id="wrapper">
             <div class="loginform">
-                <h3>What's your name ?</h3>
-                <input type="text" name="" id="txt_username">
-                <input type="button" value="Register" id="btn_register">
+                <h3 class="title-login">Nhập tên người dùng</h3>
+                <div class="box-input-login">
+                    <span>Tên đăng nhập</span>
+                    <input type="text" name="" id="txt_username" placeholder="Nhập tên đăng nhập">
+                </div>
+                <div class="box-input-login">
+                    <span>Mật khẩu</span>
+                    <input type="text" name="" id="txt_password" placeholder="Nhập mật khẩu">
+                </div>
+                <input type="button" value="Đăng nhập" id="btn_register">
             </div>
             <div class="chatform">
                 <div id="leftchatform">
-                    <div id="box-title">User Online</div>
+                    <div id="box-title">Đang hoạt động</div>
                     <div id="box-content">
                     </div>
                 </div>
                 <div id="rightchatform">
-                    <div id="ele_sayhi">
-                        Hello <span id="currentuser"></span>
-                        <input type="button" value="Log out" id="btn_logout">
+                    <div class="box-header-content">
+                        <div>Nội dung</div>
+                        <div id="ele_sayhi">
+                            <span id="currentuser"></span>
+                            <input type="button" value="Log out" id="btn_logout">
+                        </div>
                     </div>
                     <div id="listmess">
 
                     </div>
-                    <div class="writing"></div>
-                    <div>
+                    <div class="box-send-mess">
                         <input type="text" name="" id="txt_mess">
                         <input type="button" value="Send" id="btn_sendmess">
                     </div>

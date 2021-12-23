@@ -5,51 +5,103 @@
 }
 
 body{
-    background-color: rgb(221, 213, 230) !important;
+    /* background-color: rgb(221, 213, 230) !important; */
 }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
 
 #wrapper{
     width: 800px;
     margin: auto;
+    height: 100vh;
+    display: flex;
 }
-
-#txt_username{
-    background-color: transparent;
-    border: solid 1px blueviolet;
+.box-input-login{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .chatform{
-    margin-top: 30px;
     display: none;
+    margin-top: 30px;
+    width: 100%;
+    height: fit-content;
+    border-radius: 10px;
+    /* display: flex; */
+    border: 1px solid rgb(236, 236, 236);
 }
 
 #leftchatform,
 #rightchatform{
-    height: 400px;
+    height: fit-content;
 }
 
 #leftchatform{
     width: 30%;
-    float: left;
-    background-color: rgb(181, 199, 163);
 }
 
 #rightchatform{
+    border-left: 1px solid rgb(236, 236, 236);
     width: 70%;
-    float: right;
-    background-color: rgb(182, 203, 226);
 }
 
 #box-title{
     text-align: center;
     font-size: 1rem;
     height: 10%;
+    padding: 10px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+    box-shadow:  0 4px 4px -5px grey;
 }
 
 #box-content{
-    border: 2px solid black;
-    background-color: rgb(231, 150, 91);
-    height: 90%;
+    height: 360px;
     overflow-y: auto;
 }
 
@@ -58,15 +110,10 @@ body{
     border-bottom: 2px solid blue;
 }
 
-#ele_sayhi{
-    text-align: right;
-    height: 10%;
-}
-
 #listmess{
-    height: 90%;
-    background-color: rgb(206, 166, 174);
+    height: 360px;
     overflow: auto;
+    padding: 6px;
 }
 
 .notification{
@@ -74,11 +121,99 @@ body{
     font-weight: 600;
 }
 
-.mymess{
-    text-align: right;
-    font-weight: 500;
+.loginform{
+    margin: auto;
+    width: 50%;
+    border: 1px solid rgb(230, 230, 230);
+    padding: 20px;
+    text-align: center;
+}
+.title-login{
+    margin-bottom: 20px;
+}
+#btn_register{
+    margin-top: 20px;
+    padding: 6px 12px;
+    background-color: rgb(133, 221, 44);
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+#btn_register:hover{
+    background-color: rgb(81, 161, 0);
+}
+#btn_register:active{
+    background-color: rgb(42, 85, 0);
 }
 
-.writing{
+#txt_username,
+#txt_password{
+    padding: 3px 6px;
+}
+.box-input-login span{
+    display: flex;
+    align-items: center;
+}
+.box-header-content{
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+    box-shadow:  0 4px 4px -5px grey;
+}
+
+#txt_mess{
+    width: 100%;
+    padding: 6px 60px 6px 12px;
+    background-color: #F0F2F5;
+    border-radius: 12px;
+    border: none;
+}
+#txt_mess:focus-visible {
+    outline: none;
+}
+
+#btn_sendmess{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-16px, -50%);
+    border: none;
+    background-color: #F0F2F5;
+}
+
+.box-send-mess{
+    position: relative;
+    padding: 4px;
+}
+.yourmess,
+.mymess{
+    margin-bottom: 3px;
+    height: 35px;
+    align-items: center;
+    display: flex;
+}
+.mymess{
+    justify-content: end;
+}
+.yourmess .content,
+.mymess .content{
+    background-color: #F0F2F5;
+    border-radius: 12px;
+    padding: 4px 6px;
+}
+.yourmess .avatar-in-mess,
+.mymess .avatar-in-mess{
+    border-radius: 50%;
     height: 30px;
+    width: 30px;
+    margin-left: 4px;
+}
+.mymess .avatar-in-mess{
+    margin-left: 4px;
+}
+.yourmess .avatar-in-mess{
+    margin-right: 4px;
 }

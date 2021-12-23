@@ -38,8 +38,9 @@ io.on("connection", (socket) => {
 
     socket.on("client-send-mess", (data) => {
         const text = socket.Username + " : " + data;
-        socket.broadcast.emit("server-send-mess-forglobal" , text);
-        const text2 = "Tôi : " + data;
+        socket.broadcast.emit("server-send-mess-forglobal" , text);        
+        const text2 = data;
+        // const text2 = "Tôi : " + data;
         socket.emit("server-send-mess-forme" , text2);
     })
 
