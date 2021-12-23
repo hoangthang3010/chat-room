@@ -15,8 +15,13 @@ socket.on("server-send-reg-success" , (data) =>{
 })
 
 socket.on("server-send-mess-forglobal" , (data) =>{
-    // const html = `<p>${data}</p>`;
-    const html = `<div class="yourmess"><img class="avatar-in-mess" src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png"/><span class="content">${data}</span></div>`;
+    const html = `<div class="yourmess">
+        <img class="avatar-in-mess" src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png"/>
+        <div>
+            <p class="name-in-mess">${data.user}</p>
+            <span class="content">${data.content}</span>
+        </div>
+    </div>`;
     addMess(html);
 })
  
@@ -31,7 +36,7 @@ socket.on("server-send-listuserswriting" , (data) =>{
     if(data.length === 0){
         $(".writing").html("");
     }else{
-        $(".writing").html(data.join() + " đang viết");
+        $(".writing").html(data.join() + `<img src="../src/image/importing.png"/>`);
     }
 
 })
@@ -40,19 +45,19 @@ socket.on("server-send-listuserswriting" , (data) =>{
 socket.on("server-send-listusers" , (data) =>{
     $("#box-content").html("");
     let html ="";
-    data.map(user => html += `<div class="useronl">${user}</div>` );
+    data.map(user => html += `<div class="list-user" style="align-item: center"><img class="avatar-in-mess" src="https://iphonecugiare.com/wp-content/uploads/2020/03/89987601_811132979393833_6977336580381868032_n.jpg"/><span>${user}</span></div>` );
 
     $("#box-content").append(html);
 })
 
 socket.on("server-send-userlogin" , (data) =>{
-    const html = `<p class="notification">${data} đã vào phòng</p>`;
+    const html = `<p class="notification">${data} đã tham gia</p>`;
 
     addMess(html);
 })
 
 socket.on("server-send-userlogout" , (data) =>{
-    const html = `<p class="notification">${data} đã thoát khỏi phòng</p>`;
+    const html = `<p class="notification">${data} đã thoát</p>`;
 
     addMess(html);
 })
