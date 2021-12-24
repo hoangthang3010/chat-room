@@ -239,10 +239,41 @@ table {
 .yourmess .avatar-in-mess{
     margin-right: 4px;
     margin-top: 20px;
+    z-index: 2;
 }
 
 .name-in-mess{
     font-size: 12px;
     margin-bottom: 4px;
     color: #65676B;
+}
+.user-importing-text{
+}
+.container-icon-importing{
+    height: 50px;
+    width: 100px;
+    overflow: hidden;
+}
+.importing-text{
+    z-index: 1;
+    height: 50px;
+    /* -webkit-transform: scaleX(-1); */
+    position: relative;
+    /* animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: 3; */
+}
+@keyframes example {
+    /* 0% {background-color: blue;}
+    50% {background-color: red;} */
+    0% {-webkit-transform: scaleX(0);}
+    100% {-webkit-transform: scaleX(-1);}
+    /* 0%   {left:-100px; top:0px;}
+    25%  {left:0px; top:0px;}
+    50%  {left:-100px; top:0px;}
+    75%  {left:0px; top:0px;}
+    100% {left:-100px; top:0px;} */
+  }
+.mt-0{
+   margin-top: 0;
 }

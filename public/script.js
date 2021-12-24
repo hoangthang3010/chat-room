@@ -15,7 +15,7 @@ socket.on("server-send-reg-success" , (data) =>{
 })
 
 socket.on("server-send-mess-forglobal" , (data) =>{
-    const html = `<div class="yourmess">
+    const html = `<div class="yourmess" id-user="${data.user}">
         <img class="avatar-in-mess" src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png"/>
         <div>
             <p class="name-in-mess">${data.user}</p>
@@ -36,7 +36,15 @@ socket.on("server-send-listuserswriting" , (data) =>{
     if(data.length === 0){
         $(".writing").html("");
     }else{
-        $(".writing").html(data.join() + `<img src="../src/image/importing.png"/>`);
+        // $(".writing").html(data.join() + " đang viết");
+        // data.join() + 
+        $(".writing").html(`<div class="yourmess user-importing-text">
+                <img class="avatar-in-mess mt-0" src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png"/>
+                <div class="container-icon-importing">
+                    <img class="importing-text" src="/importing.gif"/>
+                </div>
+            </div>
+        `);
     }
 
 })
@@ -67,10 +75,12 @@ const addMess = (htmlAdded) =>{
     $("#listmess").html("");
 
     $("#listmess").append(html+ htmlAdded);
-    console.log(html);
+    // console.log(html);
 }
 
 const sendMess = () =>{
+    console.log($(".mymess .content"));
+    // const a = document.querySelectorAll('.yourmess .content')
     const mess = $("#txt_mess").val();
     if(mess){
         $("#txt_mess").val("");
