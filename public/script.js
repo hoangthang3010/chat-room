@@ -16,6 +16,8 @@ socket.on("server-send-reg-success" , (data) =>{
 
 socket.on("server-send-mess-forglobal" , (data) =>{
     const a = $('#listmess >div').last().attr('id-user')
+    const b =  new Date()
+    const c = $('.time-send').last()
     let html = ''
     if(a == data.user){
         $('.yourmess img').last().remove()
@@ -27,7 +29,9 @@ socket.on("server-send-mess-forglobal" , (data) =>{
         </div>`
     }
     else{
-        html = `<div class="yourmess" id-user="${data.user}">
+        // if(b.getHours() = c.cl)
+        html = `<div class="yourmess h-72" id-user="${data.user}">
+            <div class="d-flex justify-content-center fs-12 time-send">${b.getHours()}:${b.getMinutes()}</div>
             <div class="d-flex">
                 <div class="h-18 w-30 mg-r-4"></div>
                 <p class="name-in-mess mb-0">${data.user}</p>
@@ -107,7 +111,46 @@ socket.on("server-send-userlogout" , (data) =>{
 
     addMess(html);
 })
+//time
+const parseMillisecondsIntoReadableTime = (milliseconds) => {
+    //Get hours from milliseconds
+    var hours = milliseconds / (1000*60*60);
+    var absoluteHours = Math.floor(hours);
+    var h = absoluteHours > 9 ? absoluteHours : '0' + absoluteHours;
+  
+    //Get remainder from hours and convert to minutes
+    var minutes = (hours - absoluteHours) * 60;
+    var absoluteMinutes = Math.floor(minutes);
+    var m = absoluteMinutes > 9 ? absoluteMinutes : '0' +  absoluteMinutes;
+  
+    //Get remainder from minutes and convert to seconds
+    var seconds = (minutes - absoluteMinutes) * 60;
+    var absoluteSeconds = Math.floor(seconds);
+    var s = absoluteSeconds > 9 ? absoluteSeconds : '0' + absoluteSeconds;
+  
+  
+    return h + ':' + m + ':' + s;
+}
 
+const getYoutubeLikeToDisplay = (millisec) => {
+    var seconds = (millisec / 1000).toFixed(0);
+    var minutes = Math.floor(seconds / 60);
+    var hours = "";
+    if (minutes > 59) {
+        hours = Math.floor(minutes / 60);
+        hours = (hours >= 10) ? hours : "0" + hours;
+        minutes = minutes - (hours * 60);
+        minutes = (minutes >= 10) ? minutes : "0" + minutes;
+    }
+
+    seconds = Math.floor(seconds % 60);
+    seconds = (seconds >= 10) ? seconds : "0" + seconds;
+    if (hours != "") {
+        return hours + ":" + minutes + ":" + seconds;
+    }
+    return minutes + ":" + seconds;
+}
+  
 const scrollSmoothToBottom = (id) => {
     var div = document.getElementById(id);
     $('#' + id).animate({

@@ -5,12 +5,16 @@ app.use(express.static("public"));
 app.set("view engine", 'ejs');
 app.set("views", "./views");
 
+const connectDB = require('./server/database/connection');
+
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 server.listen(process.env.PORT || 3000);
 
 var arrUsers = [];
 var arrUsersWriting = [];
+
+connectDB();
 
 io.on("connection", (socket) => {
     console.log("Co ng ket noi :" + socket.id);

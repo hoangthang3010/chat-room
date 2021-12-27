@@ -286,6 +286,9 @@ table {
 .align-items-center{
     align-items: center !important;
 }
+.justify-content-center{
+    justify-content: center;
+}
 .mt-0{
    margin-top: 0 !important;
 }
@@ -294,6 +297,9 @@ table {
 }
 .mg-r-4{
     margin-right: 4px !important;
+}
+.h-18{
+    height: 18px !important;
 }
 .h-30{
     height: 30px !important;
@@ -304,9 +310,12 @@ table {
 .h-55{
     height: 55px !important;
 }
-.h-18{
-    height: 18px !important;
+.h-72{
+    height: 72px !important;
 }
 .w-30{
     width: 30px !important;
+}
+.fs-12{
+    font-size: 12px;
 }
