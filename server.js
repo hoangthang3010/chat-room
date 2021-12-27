@@ -39,6 +39,7 @@ io.on("connection", (socket) => {
     socket.on("client-send-mess", (data) => {
         const text = {user:socket.Username, content:data};
         // const text = socket.Username + " : " + data;
+        
         socket.broadcast.emit("server-send-mess-forglobal" , text);        
         const text2 = data;
         // const text2 = "Tôi : " + data;
@@ -48,6 +49,7 @@ io.on("connection", (socket) => {
     socket.on("client-send-writingevent", () => {
         if(arrUsersWriting.indexOf(socket.Username) < 0){
             arrUsersWriting.push(socket.Username);
+            // {usersWriting: arrUsersWriting, user: socket.Username}
             socket.broadcast.emit("server-send-listuserswriting" , arrUsersWriting);
         }
     })

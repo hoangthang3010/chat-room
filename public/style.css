@@ -112,6 +112,9 @@ table {
     overflow: auto;
     padding: 6px;
 }
+.writing{
+    padding: 0 6px;
+}
 
 .notification{
     text-align: center;
@@ -153,7 +156,6 @@ table {
     align-items: center;
 }
 .box-header-content{
-    background-image: url('../src/image/importing.png');
     height: 45px;
     display: flex;
     justify-content: space-between;
@@ -208,7 +210,7 @@ table {
     margin-bottom: 3px;
     height: 35px;
     align-items: center;
-    display: flex;
+    /* display: flex; */
 }
 .yourmess{
     height: 50px;
@@ -227,10 +229,13 @@ table {
     color: white;
 }
 .avatar-in-mess{
-    border-radius: 50%;
     height: 30px;
     width: 30px;
-    margin-left: 4px;
+    /* margin-left: 4px; */
+}
+.avatar-in-mess img{
+    border-radius: 50%;
+    width: 100%;
 }
 .mymess .avatar-in-mess{
     margin-left: 4px;
@@ -238,19 +243,20 @@ table {
 }
 .yourmess .avatar-in-mess{
     margin-right: 4px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     z-index: 2;
 }
 
 .name-in-mess{
+    height: calc(100% - 60px);
     font-size: 12px;
-    margin-bottom: 4px;
+    /* margin-bottom: 4px; */
     color: #65676B;
 }
 .user-importing-text{
 }
 .container-icon-importing{
-    height: 50px;
+    height: 40px;
     width: 100px;
     overflow: hidden;
 }
@@ -274,6 +280,33 @@ table {
     75%  {left:0px; top:0px;}
     100% {left:-100px; top:0px;} */
   }
+.d-flex{
+    display: flex !important;
+}
+.align-items-center{
+    align-items: center !important;
+}
 .mt-0{
-   margin-top: 0;
+   margin-top: 0 !important;
+}
+.mb-0{
+    margin-bottom: 0 !important;
+}
+.mg-r-4{
+    margin-right: 4px !important;
+}
+.h-30{
+    height: 30px !important;
+}
+.h-32{
+    height: 32px !important;
+}
+.h-55{
+    height: 55px !important;
+}
+.h-18{
+    height: 18px !important;
+}
+.w-30{
+    width: 30px !important;
 }
