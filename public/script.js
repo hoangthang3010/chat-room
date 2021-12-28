@@ -17,11 +17,12 @@ socket.on("server-send-reg-success" , (data) =>{
 socket.on("server-send-mess-forglobal" , (data) =>{
     const a = $('#listmess >div').last().attr('id-user')
     const b =  new Date()
-    const c = $('.time-send').last()
+    const c = $('#listmess >div').last().attr('time-send')
+    // const c = $('.time-send').last().attr('time-send')
     let html = ''
-    if(a == data.user){
+    if(a == data.user && (b.getTime() - 120000 < c)){
         $('.yourmess img').last().remove()
-        html = `<div class="yourmess h-32 d-flex" id-user="${data.user}">
+        html = `<div class="yourmess h-32 d-flex" id-user="${data.user}" time-send="${b.getTime()}">
                 <div class="avatar-in-mess mt-0">
                     <img src="https://dvdn247.net/wp-content/uploads/2020/07/avatar-mac-dinh-1.png"/>
                 </div>
@@ -29,9 +30,18 @@ socket.on("server-send-mess-forglobal" , (data) =>{
         </div>`
     }
     else{
-        // if(b.getHours() = c.cl)
-        html = `<div class="yourmess h-72" id-user="${data.user}">
-            <div class="d-flex justify-content-center fs-12 time-send">${b.getHours()}:${b.getMinutes()}</div>
+        let d = ''
+        let k = ''
+        if(b.getTime() - 120000 > c || !c){
+            d = `<div class="d-flex justify-content-center fs-12 time-send">${b.getHours()}:${b.getMinutes() < 10 ? '0'+b.getMinutes() : b.getMinutes()}</div>`
+            k = 'h-68'
+        }
+        else{
+            d = ''
+            k = 'h-50'
+        }
+        html = `<div class="yourmess ${k}" id-user="${data.user}" time-send="${b.getTime()}">
+            ${d}
             <div class="d-flex">
                 <div class="h-18 w-30 mg-r-4"></div>
                 <p class="name-in-mess mb-0">${data.user}</p>
@@ -49,12 +59,27 @@ socket.on("server-send-mess-forglobal" , (data) =>{
  
 socket.on("server-send-mess-forme" , (data) =>{
     // const html = `<div><p class="mymess">Tôi</p><p class="mymess">${data}</p><div>`;
-    
+
+    const b =  new Date()
+    const c = $('#listmess >div').last().attr('time-send')
     $('.mymess img').last().remove()
-    const html = `<div class="mymess d-flex h-32">
-            <span class="content">${data}</span>
-            <div class="avatar-in-mess">
-                <img src="https://iphonecugiare.com/wp-content/uploads/2020/03/89987601_811132979393833_6977336580381868032_n.jpg"/>
+    let d = ''
+    let k = ''
+    if(b.getTime() - 120000 > c || !c){
+        d = `<div class="d-flex justify-content-center fs-12 time-send">${b.getHours()}:${b.getMinutes() < 10 ? '0'+b.getMinutes() : b.getMinutes()}</div>`
+        k = 'h-50'
+    }
+    else{
+        d = ''
+        k = 'h-32'
+    }
+    const html = `<div class="mymess ${k}"  time-send="${b.getTime()}">
+            ${d}
+            <div class="d-flex justify-content-end">
+                <span class="content">${data}</span>
+                <div class="avatar-in-mess">
+                    <img src="https://iphonecugiare.com/wp-content/uploads/2020/03/89987601_811132979393833_6977336580381868032_n.jpg"/>
+                </div>
             </div>
         </div>`;
     addMess(html);
@@ -151,18 +176,18 @@ const getYoutubeLikeToDisplay = (millisec) => {
     return minutes + ":" + seconds;
 }
   
-const scrollSmoothToBottom = (id) => {
-    var div = document.getElementById(id);
-    $('#' + id).animate({
-        scrollTop: div.scrollHeight - div.clientHeight
-    }, 500);
-    console.log("div.scrollHeight:" + div.scrollHeight);
-    console.log("div.clientHeight:" + div.clientHeight);
+// const scrollSmoothToBottom = (id) => {
+    // var div = document.getElementById(id);
+    // $('#' + id).animate({
+    //     scrollTop: div.scrollHeight - div.clientHeight
+    // }, 500);
+    // console.log("div.scrollHeight:" + div.scrollHeight);
+    // console.log("div.clientHeight:" + div.clientHeight);
 
     // $('#' + id).stop().animate({
     //     scrollTop: $('#' + id)[0].scrollHeight
     //   }, 800);
- }
+//  }
 
 const addMess = (htmlAdded) =>{
     var html = $("#listmess").html();
@@ -178,7 +203,7 @@ const sendMess = () =>{
     if(mess){
         $("#txt_mess").val("");
         socket.emit("client-send-mess" , mess);
-        scrollSmoothToBottom('listmess')
+        // scrollSmoothToBottom('listmess')
     }
     else{
         $("#txt_mess").focus();

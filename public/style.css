@@ -307,8 +307,14 @@ table {
 .h-32{
     height: 32px !important;
 }
+.h-50.h-50{
+    height: 50px !important;
+}
 .h-55{
     height: 55px !important;
+}
+.h-68{
+    height: 68px !important;
 }
 .h-72{
     height: 72px !important;

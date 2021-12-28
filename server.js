@@ -14,7 +14,7 @@ server.listen(process.env.PORT || 3000);
 var arrUsers = [];
 var arrUsersWriting = [];
 
-connectDB();
+// connectDB();
 
 io.on("connection", (socket) => {
     console.log("Co ng ket noi :" + socket.id);
