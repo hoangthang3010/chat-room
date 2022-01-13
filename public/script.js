@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3000/");
+const socket = io("http://localhost:3001/");
 
 socket.on("server-send-reg-fail" , () =>{
     alert("The name has been given by someone else");
@@ -136,45 +136,6 @@ socket.on("server-send-userlogout" , (data) =>{
 
     addMess(html);
 })
-//time
-const parseMillisecondsIntoReadableTime = (milliseconds) => {
-    //Get hours from milliseconds
-    var hours = milliseconds / (1000*60*60);
-    var absoluteHours = Math.floor(hours);
-    var h = absoluteHours > 9 ? absoluteHours : '0' + absoluteHours;
-  
-    //Get remainder from hours and convert to minutes
-    var minutes = (hours - absoluteHours) * 60;
-    var absoluteMinutes = Math.floor(minutes);
-    var m = absoluteMinutes > 9 ? absoluteMinutes : '0' +  absoluteMinutes;
-  
-    //Get remainder from minutes and convert to seconds
-    var seconds = (minutes - absoluteMinutes) * 60;
-    var absoluteSeconds = Math.floor(seconds);
-    var s = absoluteSeconds > 9 ? absoluteSeconds : '0' + absoluteSeconds;
-  
-  
-    return h + ':' + m + ':' + s;
-}
-
-const getYoutubeLikeToDisplay = (millisec) => {
-    var seconds = (millisec / 1000).toFixed(0);
-    var minutes = Math.floor(seconds / 60);
-    var hours = "";
-    if (minutes > 59) {
-        hours = Math.floor(minutes / 60);
-        hours = (hours >= 10) ? hours : "0" + hours;
-        minutes = minutes - (hours * 60);
-        minutes = (minutes >= 10) ? minutes : "0" + minutes;
-    }
-
-    seconds = Math.floor(seconds % 60);
-    seconds = (seconds >= 10) ? seconds : "0" + seconds;
-    if (hours != "") {
-        return hours + ":" + minutes + ":" + seconds;
-    }
-    return minutes + ":" + seconds;
-}
   
 // const scrollSmoothToBottom = (id) => {
     // var div = document.getElementById(id);
@@ -212,7 +173,7 @@ const sendMess = () =>{
 
 $(document).ready(() => {
     
-    $("#btn_register").click(() =>{
+    $("#btn_login").click(() =>{
         const name = $("#txt_username").val();
 
         if(name !== ""){

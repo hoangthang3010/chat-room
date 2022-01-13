@@ -1,18 +1,36 @@
+require('./models/db');
+
 var express = require('express');
 var app = express();
+const path = require('path');
+
+const userRoute = require('./controllers/userController')
+
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
+
+// const bodyParser = require("body-parser");
+
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 app.use(express.static("public"));
 app.set("view engine", 'ejs');
-app.set("views", "./views");
+app.set("views", path.join(__dirname, "./views"));
+// app.set("views", "./views");
 
-const connectDB = require('./server/database/connection');
 
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 3001);
 
 var arrUsers = [];
 var arrUsersWriting = [];
+
+
+app.use('/', userRoute);
 
 // connectDB();
 

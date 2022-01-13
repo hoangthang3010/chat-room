@@ -13,18 +13,22 @@
     </head>
     <body>
         <div id="wrapper">
-            <div class="loginform">
-                <h3 class="title-login">Nhập tên người dùng</h3>
-                <div class="box-input-login">
-                    <span>Tên đăng nhập</span>
-                    <input type="text" name="" id="txt_username" placeholder="Nhập tên đăng nhập">
-                </div>
-                <div class="box-input-login">
-                    <span>Mật khẩu</span>
-                    <input type="text" name="" id="txt_password" placeholder="Nhập mật khẩu">
-                </div>
-                <input type="button" value="Đăng nhập" id="btn_register">
-            </div>
+            <form action="/" method="POST" autocomplete="off" class="loginform">
+                <!-- <div class="loginform"> -->
+                    <h3 class="title-login">Nhập tên người dùng</h3>
+                    <div class="box-input-login">
+                        <span>Tên đăng nhập</span>
+                        <input type="text" name="username" id="txt_username" placeholder="Nhập tên đăng nhập">
+                    </div>
+                    <div class="box-input-login">
+                        <span>Mật khẩu</span>
+                        <input type="text" name="password" id="txt_password" placeholder="Nhập mật khẩu">
+                    </div>
+                    <input type="submit" value="Đăng nhập" id="btn_login">
+                    <!-- <input type="submit" value="Đăng kí" id="btn_register"> -->
+                    <a href="/registerAccount"id="btn_register">Đăng kí</a>
+                <!-- </div> -->
+            </form>
             <div class="chatform">
                 <div id="leftchatform">
                     <div id="box-title">Đang hoạt động</div>

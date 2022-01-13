@@ -132,7 +132,7 @@ table {
 .title-login{
     margin-bottom: 20px;
 }
-#btn_register{
+#btn_login{
     margin-top: 20px;
     padding: 6px 12px;
     background-color: rgb(133, 221, 44);
@@ -140,10 +140,10 @@ table {
     border-radius: 4px;
     color: white;
 }
-#btn_register:hover{
+#btn_login:hover{
     background-color: rgb(81, 161, 0);
 }
-#btn_register:active{
+#btn_login:active{
     background-color: rgb(42, 85, 0);
 }
 
