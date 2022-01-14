@@ -23,3 +23,22 @@ chatroomSchema.path('email').validate((val) => {
 }, 'Invalid e-mail.');
 
 mongoose.model('account', chatroomSchema);
+
+
+var contentChatchema = new mongoose.Schema({
+    idUser: {
+        type: String,
+        required: 'This field is required.'
+    },
+    content: {
+        type: String
+    },
+    timeCreated: {
+        type: String
+    },
+    timeUpdated: {
+        type: String
+    }
+});
+
+mongoose.model('contentChat', contentChatchema);

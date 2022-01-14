@@ -36,6 +36,10 @@ socket.on("server-send-mess-forglobal" , (data) =>{
             d = `<div class="d-flex justify-content-center fs-12 time-send">${b.getHours()}:${b.getMinutes() < 10 ? '0'+b.getMinutes() : b.getMinutes()}</div>`
             k = 'h-68'
         }
+        else if(b.getTime() - 60000 > c || !c){
+            d = ''
+            k = 'h-58 d-flex align-items-end'
+        }
         else{
             d = ''
             k = 'h-50'
@@ -54,6 +58,9 @@ socket.on("server-send-mess-forglobal" , (data) =>{
             </div>
         </div>`
     };
+    setTimeout(() => {
+        document.getElementById('listmess').scroll(0, document.getElementById('listmess').scrollHeight);
+    }, 0);
     addMess(html);
 })
  
@@ -69,6 +76,10 @@ socket.on("server-send-mess-forme" , (data) =>{
         d = `<div class="d-flex justify-content-center fs-12 time-send">${b.getHours()}:${b.getMinutes() < 10 ? '0'+b.getMinutes() : b.getMinutes()}</div>`
         k = 'h-50'
     }
+    else if(b.getTime() - 60000 > c || !c){
+        d = ''
+        k = 'h-40 d-flex align-items-end'
+    }
     else{
         d = ''
         k = 'h-32'
@@ -82,6 +93,11 @@ socket.on("server-send-mess-forme" , (data) =>{
                 </div>
             </div>
         </div>`;
+    // document.getElementById("TextBox1").focus()
+    setTimeout(() => {
+        document.getElementById('listmess').scroll(0, document.getElementById('listmess').scrollHeight);
+    }, 0);
+
     addMess(html);
 
 })
@@ -138,7 +154,7 @@ socket.on("server-send-userlogout" , (data) =>{
 })
   
 // const scrollSmoothToBottom = (id) => {
-    // var div = document.getElementById(id);
+    // let div = document.getElementById(id);
     // $('#' + id).animate({
     //     scrollTop: div.scrollHeight - div.clientHeight
     // }, 500);
@@ -151,7 +167,7 @@ socket.on("server-send-userlogout" , (data) =>{
 //  }
 
 const addMess = (htmlAdded) =>{
-    var html = $("#listmess").html();
+    let html = $("#listmess").html();
     $("#listmess").html("");
 
     $("#listmess").append(html+ htmlAdded);
@@ -195,10 +211,24 @@ $(document).ready(() => {
 
     $("#btn_sendmess").click(() =>{
         sendMess();
+        let idUser, content;
+        setTimeout(() => {
+            
+        idUser = $("#currentuser").val();
+        content = $("#txt_mess").val();
+        // console.log('gsdgfhgshdgf');
+        // console.log('idUser: ', idUser);
+        // console.log('content: ',content);
+        }, 2000);
+        $.post("http://localhost:3001/send",{idUser: idUser, content: content}, function(data){
+            if(data === 'yes') {
+                alert("login success");
+              }
+          });
     })
     
     $("#txt_mess").keypress((e) =>{
-        var key = e.which;
+        let key = e.which;
         if(key == 13)  // the enter key code
             {
                 sendMess();

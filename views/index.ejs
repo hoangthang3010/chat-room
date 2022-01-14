@@ -13,8 +13,8 @@
     </head>
     <body>
         <div id="wrapper">
-            <form action="/" method="POST" autocomplete="off" class="loginform">
-                <!-- <div class="loginform"> -->
+            <!-- <form action="/" method="POST" autocomplete="off" class="loginform"> -->
+                <div class="loginform">
                     <h3 class="title-login">Nhập tên người dùng</h3>
                     <div class="box-input-login">
                         <span>Tên đăng nhập</span>
@@ -27,15 +27,15 @@
                     <input type="submit" value="Đăng nhập" id="btn_login">
                     <!-- <input type="submit" value="Đăng kí" id="btn_register"> -->
                     <a href="/registerAccount"id="btn_register">Đăng kí</a>
-                <!-- </div> -->
-            </form>
+                /</div>
+            <!-- </form> -->
             <div class="chatform">
                 <div id="leftchatform">
-                    <div id="box-title">Đang hoạt động</div>
-                    <div id="box-content">
+                    <div id="box-title">Danh sách nhóm chat</div>
+                    <div id="box-list-group">
                     </div>
                 </div>
-                <div id="rightchatform">
+                <div id="centerchatform">
                     <div class="box-header-content">
                         <div>Nội dung</div>
                         <div id="ele_sayhi">
@@ -47,9 +47,16 @@
 
                     </div>
                     <div class="writing"></div>
-                    <div class="box-send-mess">
+                    <div class="box-send-mess d-flex" id="TextBox1">
                         <input type="text" name="" id="txt_mess">
-                        <input type="button" value="Send" id="btn_sendmess">
+                        <span id="btn_sendmess" class="text-align-center"> &#11162;</span>
+                        <!-- <input type="button" value="" id="btn_sendmess"> -->
+                        <!-- <input type="button" value="Send" id="btn_sendmess"> -->
+                    </div>
+                </div>
+                <div id="rightchatform">
+                    <div id="box-title">Đang hoạt động</div>
+                    <div id="box-content">
                     </div>
                 </div>
             </div>

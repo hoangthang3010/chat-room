@@ -5,6 +5,8 @@ var app = express();
 const path = require('path');
 
 const userRoute = require('./controllers/userController')
+// const userRoute = require('./controllers/userController')
+
 
 app.use(express.json());
 app.use(express.urlencoded({

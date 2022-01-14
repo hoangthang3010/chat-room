@@ -56,7 +56,7 @@ table {
 
 
 #wrapper{
-    width: 800px;
+    width: 1000px;
     margin: auto;
     height: 100vh;
     display: flex;
@@ -78,17 +78,23 @@ table {
 }
 
 #leftchatform,
+#centerchatform,
 #rightchatform{
     height: fit-content;
 }
 
-#leftchatform{
-    width: 30%;
+#centerchatform{
+    width: 56%;
+    border-right: 1px solid rgb(236, 236, 236);
 }
 
-#rightchatform{
+#centerchatform{
     border-left: 1px solid rgb(236, 236, 236);
-    width: 70%;
+}
+
+#leftchatform,
+#rightchatform{
+    width: 22%;
 }
 
 #box-title{
@@ -166,8 +172,8 @@ table {
 }
 
 #txt_mess{
-    width: 100%;
-    padding: 6px 60px 6px 12px;
+    width: calc(100% - 30px);
+    padding: 6px 44px 6px 12px;
     background-color: #F0F2F5;
     border-radius: 12px;
     border: none;
@@ -177,12 +183,18 @@ table {
 }
 
 #btn_sendmess{
-    position: absolute;
-    top: 50%;
+    cursor: pointer;
+    width: 30px;
+    content: '\2B9A';
+    color: #0084FF;
+    font-weight: 600;
+    border: none;
+    font-size: 26px;
+    /* position: absolute;
+    top: 46%;
     right: 0;
     transform: translate(-16px, -50%);
-    border: none;
-    background-color: #F0F2F5;
+    background-color: #F0F2F5; */
 }
 
 .box-send-mess{
@@ -199,9 +211,9 @@ table {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    left: 24px;
+    left: 20px;
     top: 70%;
-    background-color: greenyellow;
+    background-color: #2F9A48;
 }
 .list-user,
 .yourmess,
@@ -286,6 +298,12 @@ table {
 .align-items-center{
     align-items: center !important;
 }
+.align-items-end{
+    align-items: end !important;
+}
+.text-align-center{
+    text-align: center !important;
+}
 .justify-content-center{
     justify-content: center;
 }
@@ -307,11 +325,17 @@ table {
 .h-32{
     height: 32px !important;
 }
+.h-40{
+    height: 40px !important;
+}
 .h-50.h-50{
     height: 50px !important;
 }
 .h-55{
     height: 55px !important;
+}
+.h-58{
+    height: 58px !important;
 }
 .h-68{
     height: 68px !important;
