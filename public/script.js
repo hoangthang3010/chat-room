@@ -210,16 +210,10 @@ $(document).ready(() => {
     })
 
     $("#btn_sendmess").click(() =>{
+        const idUser = $("#txt_username").val();
+        const content = $("#txt_mess").val();
         sendMess();
-        let idUser, content;
-        setTimeout(() => {
-            
-        idUser = $("#currentuser").val();
-        content = $("#txt_mess").val();
-        // console.log('gsdgfhgshdgf');
-        // console.log('idUser: ', idUser);
-        // console.log('content: ',content);
-        }, 2000);
+        
         $.post("http://localhost:3001/send",{idUser: idUser, content: content}, function(data){
             if(data === 'yes') {
                 alert("login success");

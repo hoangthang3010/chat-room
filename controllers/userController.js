@@ -46,7 +46,7 @@ function insertRecord(req, res) {
 
 router.post('/send', (req, res) => {
     console.log(req.body);
-    insertContentChat(req, res);
+    // insertContentChat(req, res);
 });
 function insertContentChat(req, res) {
     console.log(req.body);
