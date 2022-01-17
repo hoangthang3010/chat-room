@@ -11,6 +11,7 @@ socket.on("server-send-reg-success" , (data) =>{
 
 
     $("#currentuser").html(data);
+    // sendDataToClick(data)
 
 })
 
@@ -86,7 +87,7 @@ socket.on("server-send-mess-forme" , (data) =>{
     }
     const html = `<div class="mymess ${k}"  time-send="${b.getTime()}">
             ${d}
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end align-items-center">
                 <span class="content">${data}</span>
                 <div class="avatar-in-mess">
                     <img src="https://iphonecugiare.com/wp-content/uploads/2020/03/89987601_811132979393833_6977336580381868032_n.jpg"/>
@@ -174,66 +175,70 @@ const addMess = (htmlAdded) =>{
 }
 
 const sendMess = () =>{
-    // console.log($(".mymess .content"));
-    // const a = document.querySelectorAll('.yourmess .content')
     const mess = $("#txt_mess").val();
     if(mess){
         $("#txt_mess").val("");
         socket.emit("client-send-mess" , mess);
-        // scrollSmoothToBottom('listmess')
     }
     else{
         $("#txt_mess").focus();
     }
 }
 
-$(document).ready(() => {
-    
-    $("#btn_login").click(() =>{
-        const name = $("#txt_username").val();
+// function sendDataToClick(valueId){
+//     sendData = () =>{
+//         console.log(valueId);
+//     }
+// }
 
-        if(name !== ""){
-            $("#listmess").html("");
-            socket.emit("client-send-username", name);
-        } else {
-            alert("Your name is empty");
-        }
-    });
-
-    $("#btn_logout").click(() =>{
-        $("#txt_username").val("");
-        $(".loginform").show();
-        $(".chatform").hide();
-        $("#listmess").html("");
-
-        socket.emit("client-send-logoutevent");
-    })
-
-    $("#btn_sendmess").click(() =>{
-        const idUser = $("#txt_username").val();
-        const content = $("#txt_mess").val();
-        sendMess();
+    $(document).ready(() => {
         
-        $.post("http://localhost:3001/send",{idUser: idUser, content: content}, function(data){
-            if(data === 'yes') {
-                alert("login success");
-              }
-          });
-    })
-    
-    $("#txt_mess").keypress((e) =>{
-        let key = e.which;
-        if(key == 13)  // the enter key code
-            {
-                sendMess();
+        $("#btn_login").click(() =>{
+            const name = $("#txt_username").val();
+
+            if(name !== ""){
+                $("#listmess").html("");
+                socket.emit("client-send-username", name);
+            } else {
+                alert("Your name is empty");
             }
-    })
+        });
 
-    $("#txt_mess").focusin(() =>{
-        socket.emit("client-send-writingevent");
-    })
+        $("#btn_logout").click(() =>{
+            $("#txt_username").val("");
+            $(".loginform").show();
+            $(".chatform").hide();
+            $("#listmess").html("");
 
-    $("#txt_mess").focusout((e) =>{
-        socket.emit("client-send-stopwritingevent");
+            socket.emit("client-send-logoutevent");
+        })
+        
+        $("#btn_sendmess").click(() =>{
+            const idUser = $("#txt_username").val();
+            const content = $("#txt_mess").val();
+            console.log('sockettttt: ',socket);
+            sendMess();
+            
+            $.post("http://localhost:3001/send",{idUser: idUser, content: content}, function(data){
+                if(data === 'yes') {
+                    alert("login success");
+                }
+            });
+        })
+        $("#txt_mess").keypress((e) =>{
+            let key = e.which;
+            if(key == 13)  // the enter key code
+                {
+                    sendMess();
+                }
+        })
+
+        $("#txt_mess").focusin(() =>{
+            socket.emit("client-send-writingevent");
+        })
+
+        $("#txt_mess").focusout((e) =>{
+            socket.emit("client-send-stopwritingevent");
+        })
     })
-})
+// }

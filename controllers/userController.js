@@ -27,6 +27,7 @@ function insertRecord(req, res) {
     var account = new Account();
     account.username = req.body.username;
     account.password = req.body.password;
+    account.roles = "user";
     account.save((err, doc) => {
         if (!err)
             res.redirect('/');
