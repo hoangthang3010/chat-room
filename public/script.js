@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3001/");
+const socket = io("https://chat-room-hoangthang3010.herokuapp.com/");
 
 socket.on("server-send-reg-fail" , () =>{
     alert("The name has been given by someone else");
